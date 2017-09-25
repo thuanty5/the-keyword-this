@@ -34,6 +34,7 @@
   //getUsername --> which is a function that returns the current object's username property. *Don't use 'user' instead use the 'this' keyword*
 
     //Code Here
+
     var user = {
       username: "thuan_t",
       email: "email@email.com",
@@ -43,7 +44,8 @@
     }
 
 //Now, invoke the getUsername method and verify you got the username of the object and not anything else.
-// user.getUsername();
+
+user.getUsername();
 
 //Next Problem
 
@@ -51,6 +53,7 @@
 // Write a constructor function, including method definitions, which will make the following function invocations function properly.
 
   //Function Invocations Here
+
   var Car = function(make, model, year){
     this.make = make;
     this.model = model;
@@ -61,7 +64,8 @@ var prius = new Car('Toyota', 'Prius', 2011);
 var mustang = new Car('Ford', 'Mustang', 2013);
 
 //Hint, you'll need to add a move property, with a starting value of zero, and write a moveCar function which will increment the move property by 10. The move property will be added to every object that is being returned from the Car function. You'll also need to use the 'this' keyword properly in order to make sure you're invoking moveCar on the right object (prius vs mustang).
-Car.prototype.move = 0;
+
+Car.move = 0;
 Car.prototype.moveCar = function() {
   return this.move += 10;
 };
@@ -77,10 +81,7 @@ var getYear = function(){
   return this.year;
 };
 
-var getPriusYear = getYear.bind(prius);
-var getMustangYear = getYear.bind(mustang);
-console.log(getPriusYear);
-console.log(getMustangYear);
+
 
 // Above you are given a getYear function.  Use the bind function to bind the prius object to the function and save it in a variable called getPriusYear
 // Then use the bind function to bind the mustang to the function and save it in a varabile called getMustangYear
@@ -88,7 +89,13 @@ console.log(getMustangYear);
 
 
 //Note(no tests)
+
   //Code Here
+
+  var getPriusYear = getYear.bind(prius);
+  var getMustangYear = getYear.bind(mustang);
+  console.log(getPriusYear());
+  console.log(getMustangYear());
 
 
 
@@ -100,11 +107,14 @@ var myUser = {
  email: 'iliketurtles@gmail.com'
 };
 
-var getMyUsername = function() {
+var getMyUser = function() {
  return this.username;
 };
 
-var userName = getMyUsername.call(myUser); //Fix this
+// var userName = getMyUser.bind(myUser); //Fix this
+var userName = getMyUser.call(myUser);
+console.log(userName());
+//check code
 
 //Above you're given an object, and  a function. What will the getMyUsername function return?
 //Note(no tests)
